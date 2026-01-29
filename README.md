@@ -1,6 +1,5 @@
-# portfolio_draft1
-
-A new Flutter project.
+# interactive_cv
+my Flutter web-based cv project.
 
 ## Getting Started
 
