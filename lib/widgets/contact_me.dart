@@ -1,0 +1,82 @@
+import 'package:flutter/material.dart';
+import 'package:cv/theme/cyber_theme.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class ContactMe extends StatelessWidget {
+  const ContactMe({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxHeight: 500),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsetsGeometry.all(75.0),
+            child: Column(
+              children: [
+                Text(
+                  "Contact me",
+                  style: TextStyle(
+                    color: ColorPalette.dustyPink,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () async {
+                        final Uri githubUri = Uri.parse(
+                          'https://github.com/Kon-IoT',
+                        );
+
+                        if (await canLaunchUrl(githubUri)) {
+                          await launchUrl(
+                            githubUri,
+                            mode: LaunchMode.externalApplication,
+                          );
+                        }
+                      },
+                      child: Image.asset(
+                        "assets/images/github.png",
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                    SizedBox(width: 50),
+                    GestureDetector(
+                      onTap: () async {
+                        final Uri emailUri = Uri(
+                          scheme: 'mailto',
+                          path: 'chankettakun@gmail.com',
+                          queryParameters: {'subject': 'Hello Ketta'},
+                        );
+
+                        await launchUrl(
+                          emailUri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      child: Image.asset(
+                        "assets/images/gmail.png",
+                        width: 100,
+                        height: 100,
+                      ),
+                    ),
+                  ],
+                ),
+                /////////////////////////ENDING GIF
+                SizedBox(height: 50),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

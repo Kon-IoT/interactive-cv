@@ -1,0 +1,131 @@
+name: cv
+description: "My flutter web-basedCV"
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  url_launcher: ^6.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/gif/anime_girl.gif
+    - assets/gif/anime_girl2.gif
+    - assets/gif/typing.gif
+    - assets/gif/laptop1.gif
+    - assets/gif/laptop.gif
+    - assets/gif/phone.gif
+
+    - assets/images/widget.jpeg
+    - assets/images/widget2.jpg
+
+    - assets/images/android.png
+    - assets/images/android_studio.png
+    - assets/images/arduino.png
+    - assets/images/c.png
+    - assets/images/cpp.png
+    - assets/images/dart.png
+    - assets/images/esp32.png
+    - assets/images/flutter.png
+    - assets/images/git.png
+    - assets/images/javafx.png
+    - assets/images/java.png
+    - assets/images/linux.png
+    - assets/images/opencv.png
+    - assets/images/orangepi.png
+    - assets/images/pygame.png
+    - assets/images/python.png
+    - assets/images/qt.png
+    - assets/images/raspberrypi.png
+    - assets/images/ros2.png
+    - assets/images/tkinter.png
+    - assets/images/ubuntu.png
+    - assets/images/ultralytics.png
+    - assets/images/flet.png
+    - assets/images/firebase.png
+    - assets/images/matlab.png
+    - assets/images/solidwork.png
+    - assets/images/github.png
+    - assets/images/figma.png
+    - assets/images/flutterflow.png
+    - assets/images/huggingface.png
+    - assets/images/capcut.png
+
+    - assets/images/telegram.png
+    - assets/images/gmail.png
+
+    - assets/images/itc.png
+    - assets/images/gtr.png
+    - assets/images/dclab.png
+    - assets/images/fablab.png
+    - assets/images/camflytech.png
+    - assets/images/robocon_2025.png
+    - assets/images/robocon_2026.png
+
+    - assets/images/temporary_pfp.jpg
+    
+    - assets/images/folder_red.png
+    - assets/images/folder_blue.png
+    - assets/images/folder_cyan.png
+    - assets/images/folder_green.png
+    - assets/images/folder_grey.png
+    - assets/images/folder_orange.png
+    - assets/images/folder_yellow.png
+    - assets/images/script.png
+
+
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
