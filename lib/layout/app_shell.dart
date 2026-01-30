@@ -134,6 +134,7 @@ class _AppShellState extends State<AppShell> {
                                         gifPath: "assets/gif/anime_girl.gif",
                                       ),
                                     ),
+                                    
                                     IntroductionDesktop(),
                                     KeyedSubtree(
                                       key: aboutKey,
@@ -141,20 +142,24 @@ class _AppShellState extends State<AppShell> {
                                           ? AboutMeDesktop()
                                           : AboutMeMobile(),
                                     ),
+                                    SizedBox(height: 50),
                                     KeyedSubtree(
                                       key: backgroundKey,
                                       child: isDesktop
                                           ? BackgroundDesktop()
                                           : BackgroundMobile(),
                                     ),
+                                    SizedBox(height: 50),
                                     KeyedSubtree(
                                       key: stacksKey,
                                       child: StacksDesktop(),
                                     ),
+                                    SizedBox(height: 50),
                                     KeyedSubtree(
                                       key: projectsKey,
                                       child: ProjectsDesktop(),
                                     ),
+                                    SizedBox(height: 50),
                                     ProjectFolderGenerator(),
                                     SizedBox(height: 24),
                                     KeyedSubtree(

@@ -9,10 +9,8 @@ class AboutMeMobile extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: 500, maxHeight: 1300),
-      child: Padding(
-        padding: const EdgeInsets.all(75.0),
+    return Padding(
+        padding: const EdgeInsets.all(35.0),
         child: Column(
           children: [
             Column(
@@ -52,7 +50,7 @@ class AboutMeMobile extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      
     );
   }
 }
