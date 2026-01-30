@@ -50,10 +50,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/gif/anime_girl.gif
-    - assets/gif/anime_girl2.gif
-    - assets/gif/typing.gif
-    - assets/gif/laptop1.gif
-    - assets/gif/laptop.gif
     - assets/gif/phone.gif
 
     - assets/images/widget.jpeg

@@ -117,7 +117,7 @@ class _AppShellState extends State<AppShell> {
                                 width: double.maxFinite,
                                 height: isDesktop ? 250 : 150,
                                 child: GifBox(
-                                  gifPath: 'assets/gif/anime_girl.gif',
+                                  gifPath: "assets/gif/anime_girl.gif",
                                 ),
                               ),
                               IntroductionDesktop(),
