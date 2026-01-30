@@ -21,24 +21,23 @@ class TerminalTitleBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const WindowDot(color: Color(0xFFED6A5E)),
-          const SizedBox(width: 6),
-          const WindowDot(color: Color(0xFFF4BF4F)),
-          const SizedBox(width: 6),
-          const WindowDot(color: Color(0xFF61C554)),
-          const SizedBox(width: 12),
-          const Icon(Icons.terminal, size: 16, color: Colors.white70),
-          const SizedBox(width: 6),
+          Row(
+            children: [
+              const WindowDot(color: Color(0xFFED6A5E)),
+              const SizedBox(width: 6),
+              const WindowDot(color: Color(0xFFF4BF4F)),
+              const SizedBox(width: 6),
+              const WindowDot(color: Color(0xFF61C554)),
+              const SizedBox(width: 12),
+              const Icon(Icons.terminal, size: 16, color: Colors.white70),
+            ],
+          ),
           Text(
-            'kat@portfolio:~$projectFolder/',
-            style: const TextStyle(fontSize: 10, color: Colors.white70),
+            '~$projectFolder/',
+            style: const TextStyle(fontSize: 8, color: Colors.white70),
           ),
           Row(
             children: [
-              // const SizedBox(width: 12),
-              // const Icon(Icons.minimize, size: 16, color: Colors.white70),
-              // const SizedBox(width: 12),
-              // const Icon(Icons.crop_square, size: 16, color: Colors.white70),
               IconButton(
                 onPressed: onClose,
                 icon: Icon(Icons.close, size: 16, color: Colors.white70),
@@ -58,8 +57,8 @@ class WindowDot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 12,
-      height: 12,
+      width: 8,
+      height: 8,
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     );
   }

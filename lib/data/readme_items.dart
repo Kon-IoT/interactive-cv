@@ -94,7 +94,7 @@ final ros2_project_p3_rm = ReadmeItem(
   stacks: ["assets/images/python.png", "assets/images/ros2.png"],
 );
 final embeded_iot_p1_rm = ReadmeItem(
-  title: "plant_monitoring_auto_watering_system",
+  title: "plant_monitoring_system",
   description:
       """This IoT project was designed to automate plant care by monitoring environmental conditions such as soil moisture and triggering irrigation when 
         thresholds are met. The system combines embedded sensing with cloud-based data logging. Data is transmitted over HTTP and logged to Google Sheets, 
@@ -108,7 +108,7 @@ final embeded_iot_p1_rm = ReadmeItem(
   ],
 );
 final embeded_iot_p2_rm = ReadmeItem(
-  title: "water_contamination_detection_system",
+  title: "water_monitoring_system",
   description:
       """This project focuses on monitoring water quality using embedded sensors connected to an ESP32 running ESP-IDF. Sensor data is periodically uploaded to the cloud 
         for visualization and analysis. ThingSpeak is used as the data platform, enabling integration with MATLAB for signal analysis and trend evaluation. The system 

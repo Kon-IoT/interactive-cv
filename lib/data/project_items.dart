@@ -132,7 +132,7 @@ final List<ProjectItem> embeddedIoTProjects = [
   ProjectItem(
     emoji: "🌱📡",
     title: "Plant Monitoring & Auto-Watering System",
-    projectFolder: "plant_monitoring_auto_watering_system",
+    projectFolder: "plant_monitoring_system",
     overview:
         "IoT system using Arduino and ESP8266 to monitor plant conditions and trigger automatic watering with cloud logging.",
     status: "Completed",
@@ -144,7 +144,7 @@ final List<ProjectItem> embeddedIoTProjects = [
   ProjectItem(
     emoji: "🚰📊",
     title: "Water Contamination Detection System",
-    projectFolder: "water_contamination_detection_system",
+    projectFolder: "water_monitoring_system",
     overview:
         "ESP32 + ESP-IDF-based water quality monitoring system uploading sensor data to ThingSpeak for analysis.",
     status: "Completed",

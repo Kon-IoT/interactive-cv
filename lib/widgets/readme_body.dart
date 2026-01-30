@@ -13,7 +13,7 @@ class ReadmeBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(readmeFile.description),
+          Text(readmeFile.description, style: TextStyle(fontSize: 12)),
           SizedBox(height: 24),
           Row(
             children: [

@@ -33,15 +33,15 @@ class FileManagerBody extends StatelessWidget {
                   children: [
                     Image.asset(
                       "assets/images/script.png",
-                      width: 36,
-                      height: 36,
+                      width: 32,
+                      height: 32,
                     ),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Text(
                         file,
                         style: const TextStyle(
-                          fontSize: 16,
+                          fontSize: 12,
                           height: 1.3,
                           color: ColorPalette.cyberRaisinBlack,
                         ),

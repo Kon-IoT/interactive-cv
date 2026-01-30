@@ -9,7 +9,7 @@ final roboticVisionFolder = FileListItem(
   folderTitle: "Robotics & Vision",
   folderContent: [
     "yolov11_ball_detection_system.md",
-    "robocon_2026_vision_pipeline",
+    "robocon_2026_vision_pipeline.md",
   ],
 );
 
@@ -29,8 +29,8 @@ final ros2ProjectFolder = FileListItem(
 final embeddedIotFolder = FileListItem(
   folderTitle: "Embedded & IoT",
   folderContent: [
-    "embedded_and_iot_systems.md",
-    "water_contamination_detection_system.md",
+    "plant_monitoring_system.md",
+    "water_monitoring_system.md",
     "diy_7_segment_digital_clock.md",
   ],
 );
@@ -40,14 +40,14 @@ final roboconToolsFolder = FileListItem(
 );
 final personalProjectsFolder = FileListItem(
   folderTitle: "Personal Projects",
-  folderContent: ["my_portfolio_website"],
+  folderContent: ["my_portfolio_website.md"],
 );
 
 final academicProjecsFolder = FileListItem(
   folderTitle: "Academic Projects",
   folderContent: [
-    "student_management_system",
-    "mp3_player",
-    "terminal_based_cafe_pos_system",
+    "student_management_system.md",
+    "mp3_player.md",
+    "terminal_based_cafe_pos_system.md",
   ],
 );

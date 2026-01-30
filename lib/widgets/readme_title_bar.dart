@@ -29,24 +29,12 @@ class ReadmeTitleBar extends StatelessWidget {
           Text(
             'README.md',
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 10,
               color: ColorPalette.cyberRaisinBlack,
             ),
           ),
           Row(
             children: [
-              // const SizedBox(width: 12),
-              // const Icon(
-              //   Icons.minimize,
-              //   size: 16,
-              //   color: ColorPalette.cyberRaisinBlack,
-              // ),
-              // const SizedBox(width: 12),
-              // const Icon(
-              //   Icons.crop_square,
-              //   size: 16,
-              //   color: ColorPalette.cyberRaisinBlack,
-              // ),
               IconButton(
                 onPressed: onClose,
                 icon: Icon(

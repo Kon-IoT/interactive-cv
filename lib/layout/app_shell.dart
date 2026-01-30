@@ -38,9 +38,9 @@ class _AppShellState extends State<AppShell> {
   final stacksKey = GlobalKey();
   final projectsKey = GlobalKey();
   final contactKey = GlobalKey();
-  Offset fileManagerPos = const Offset(0, 0);
-  Offset projectTerminalPos = const Offset(0, 250);
-  Offset readmeTerminalPos = const Offset(0, 600);
+  Offset fileManagerPos = const Offset(10, 0);
+  Offset projectTerminalPos = const Offset(10, 250);
+  Offset readmeTerminalPos = const Offset(10, 600);
   FolderIcon? activeFolder;
   ProjectItem? activeProject;
 
@@ -134,7 +134,7 @@ class _AppShellState extends State<AppShell> {
                                         gifPath: "assets/gif/anime_girl.gif",
                                       ),
                                     ),
-                                    
+
                                     IntroductionDesktop(),
                                     KeyedSubtree(
                                       key: aboutKey,
@@ -190,7 +190,7 @@ class _AppShellState extends State<AppShell> {
                   left: fileManagerPos.dx,
                   top: fileManagerPos.dy,
                   child: DraggableTerminal(
-                    width: 400,
+                    width: 300,
                     height: 220,
                     window: FileManagerWindow(
                       onWindowClose: () {
@@ -230,7 +230,7 @@ class _AppShellState extends State<AppShell> {
                         projectTerminalPos += delta;
                       });
                     },
-                    width: 400,
+                    width: 300,
                     height: 300,
                     window: TerminalWindow(
                       project: activeProject!,
@@ -248,7 +248,7 @@ class _AppShellState extends State<AppShell> {
                   left: readmeTerminalPos.dx,
                   top: readmeTerminalPos.dy,
                   child: DraggableTerminal(
-                    width: 400,
+                    width: 300,
                     height: 400,
                     window: ReadmeWindow(
                       onWindowClose: () {

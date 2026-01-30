@@ -35,24 +35,12 @@ class FileManagerTitleBar extends StatelessWidget {
           Text(
             'kat@portfolio:~${selectedFolder.folderTitle}/',
             style: const TextStyle(
-              fontSize: 10,
+              fontSize: 9,
               color: ColorPalette.cyberRaisinBlack,
             ),
           ),
           Row(
             children: [
-              // const SizedBox(width: 12),
-              // const Icon(
-              //   Icons.minimize,
-              //   size: 16,
-              //   color: ColorPalette.cyberRaisinBlack,
-              // ),
-              // const SizedBox(width: 6),
-              // const Icon(
-              //   Icons.crop_square,
-              //   size: 16,
-              //   color: ColorPalette.cyberRaisinBlack,
-              // ),
               IconButton(
                 onPressed: onClose,
                 icon: Icon(

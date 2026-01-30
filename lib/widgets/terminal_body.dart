@@ -16,26 +16,26 @@ class TerminalBody extends StatelessWidget {
 
   static const _mono = TextStyle(
     fontFamily: 'JetBrainsMono',
-    fontSize: 14,
+    fontSize: 12,
     height: 1.6,
     color: Color(0xFFE6EDF3),
   );
 
   static const _promptUser = TextStyle(
     fontFamily: 'JetBrainsMono',
-    fontSize: 14,
+    fontSize: 12,
     color: Color(0xFF37EBF3),
   );
 
   static const _promptPath = TextStyle(
     fontFamily: 'JetBrainsMono',
-    fontSize: 14,
+    fontSize: 12,
     color: Color(0xFF7D8590),
   );
 
   static const _label = TextStyle(
     fontFamily: 'JetBrainsMono',
-    fontSize: 14,
+    fontSize: 12,
     color: Color(0xFF37EBF3),
   );
 
@@ -113,7 +113,7 @@ Widget terminalAsciiStat({
           asciiBar(value, max),
           style: const TextStyle(
             fontFamily: 'JetBrainsMono',
-            fontSize: 14,
+            fontSize: 12,
             height: 1.6,
             color: ColorPalette.cyberSteelPink,
           ),
