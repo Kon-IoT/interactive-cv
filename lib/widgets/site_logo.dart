@@ -9,14 +9,22 @@ class SiteLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Text(
-        "Kon-IoT",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 22,
-          decoration: TextDecoration.underline,
-          color: ColorPalette.cyberRichLemon,
-        ),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final fontSize = constraints.maxHeight > 0
+              ? (constraints.maxHeight * 0.6).clamp(12.0, 22.0)
+              : 22.0;
+
+          return Text(
+            "Kon-IoT",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: fontSize,
+              decoration: TextDecoration.underline,
+              color: ColorPalette.cyberRichLemon,
+            ),
+          );
+        },
       ),
     );
   }

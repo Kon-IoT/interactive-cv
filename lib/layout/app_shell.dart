@@ -68,182 +68,201 @@ class _AppShellState extends State<AppShell> {
     final isDesktop = MediaQuery.of(context).size.width > 1400;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Column(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final showHeader = constraints.maxHeight > 50;
+          return Stack(
             children: [
-              HearderMobile(
-                onNavSelected: (index) {
-                  final keys = [
-                    aboutKey,
-                    backgroundKey,
-                    stacksKey,
-                    projectsKey,
-                    contactKey,
-                  ];
-
-                  final ctx = keys[index].currentContext;
-                  if (ctx == null) return;
-
-                  Scrollable.ensureVisible(
-                    ctx,
-                    duration: const Duration(milliseconds: 600),
-                    curve: Curves.easeInOutCubic,
-                    // alignment: 0.1,
-                  );
-                },
-              ),
-              Expanded(
-                child: Row(
+              Positioned.fill(
+                child: Column(
                   children: [
-                    if (isDesktop) SideProfileSection(),
+                    if (showHeader)
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: 1,
+                          maxHeight: 70,
+                          minWidth: screenWidth,
+                        ),
+                        child: HearderMobile(
+                          onNavSelected: (index) {
+                            final keys = [
+                              aboutKey,
+                              backgroundKey,
+                              stacksKey,
+                              projectsKey,
+                              contactKey,
+                            ];
+
+                            final ctx = keys[index].currentContext;
+                            if (ctx == null) return;
+
+                            Scrollable.ensureVisible(
+                              ctx,
+                              duration: const Duration(milliseconds: 600),
+                              curve: Curves.easeInOutCubic,
+                              // alignment: 0.1,
+                            );
+                          },
+                        ),
+                      ),
                     Expanded(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(24),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: ColorPalette.ghBackground,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: ColorPalette.ghBorder),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              if (!isDesktop) TopProfileSection(),
-                              TerminalHeader(),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                width: double.maxFinite,
-                                height: isDesktop ? 250 : 150,
-                                child: GifBox(
-                                  gifPath: "assets/gif/anime_girl.gif",
+                      child: Row(
+                        children: [
+                          if (isDesktop) SideProfileSection(),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.all(24),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: ColorPalette.ghBackground,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: ColorPalette.ghBorder,
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    if (!isDesktop) TopProfileSection(),
+                                    TerminalHeader(),
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      width: double.maxFinite,
+                                      height: isDesktop ? 250 : 150,
+                                      child: GifBox(
+                                        gifPath: "assets/gif/anime_girl.gif",
+                                      ),
+                                    ),
+                                    IntroductionDesktop(),
+                                    KeyedSubtree(
+                                      key: aboutKey,
+                                      child: isDesktop
+                                          ? AboutMeDesktop()
+                                          : AboutMeMobile(),
+                                    ),
+                                    KeyedSubtree(
+                                      key: backgroundKey,
+                                      child: isDesktop
+                                          ? BackgroundDesktop()
+                                          : BackgroundMobile(),
+                                    ),
+                                    KeyedSubtree(
+                                      key: stacksKey,
+                                      child: StacksDesktop(),
+                                    ),
+                                    KeyedSubtree(
+                                      key: projectsKey,
+                                      child: ProjectsDesktop(),
+                                    ),
+                                    ProjectFolderGenerator(),
+                                    SizedBox(height: 24),
+                                    KeyedSubtree(
+                                      key: contactKey,
+                                      child: ContactMeMobile(),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      width: double.maxFinite,
+                                      height: isDesktop ? 300 : 150,
+                                      child: GifBox(
+                                        gifPath: "assets/gif/phone.gif",
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              IntroductionDesktop(),
-                              KeyedSubtree(
-                                key: aboutKey,
-                                child: isDesktop
-                                    ? AboutMeDesktop()
-                                    : AboutMeMobile(),
-                              ),
-                              KeyedSubtree(
-                                key: backgroundKey,
-                                child: isDesktop
-                                    ? BackgroundDesktop()
-                                    : BackgroundMobile(),
-                              ),
-                              KeyedSubtree(
-                                key: stacksKey,
-                                child: StacksDesktop(),
-                              ),
-                              KeyedSubtree(
-                                key: projectsKey,
-                                child: ProjectsDesktop(),
-                              ),
-                              ProjectFolderGenerator(),
-                              SizedBox(height: 24),
-                              KeyedSubtree(
-                                key: contactKey,
-                                child: ContactMeMobile(),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                width: double.maxFinite,
-                                height: isDesktop ? 300 : 150,
-                                child: GifBox(gifPath: "assets/gif/phone.gif"),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
+              if (showFileManager && activeFolder != null)
+                Positioned(
+                  left: fileManagerPos.dx,
+                  top: fileManagerPos.dy,
+                  child: DraggableTerminal(
+                    width: 400,
+                    height: 220,
+                    window: FileManagerWindow(
+                      onWindowClose: () {
+                        setState(() {
+                          showFileManager = false;
+                        });
+                      },
+                      selectedFolder: activeFolder!,
+                      onScriptExecuted: (fileName) {
+                        final key = fileName.replaceAll(".md", "");
+
+                        final project = projectLookup[key];
+                        if (project == null) return;
+
+                        setState(() {
+                          activeProject = project;
+                          showProjectTerminal = true;
+                          showReadmeTerminal = true;
+                        });
+                      },
+                    ),
+                    onDrag: (delta) {
+                      setState(() {
+                        fileManagerPos += delta;
+                      });
+                    },
+                  ),
+                ),
+
+              if (showProjectTerminal && activeProject != null)
+                Positioned(
+                  left: projectTerminalPos.dx,
+                  top: projectTerminalPos.dy,
+                  child: DraggableTerminal(
+                    onDrag: (delta) {
+                      setState(() {
+                        projectTerminalPos += delta;
+                      });
+                    },
+                    width: 400,
+                    height: 300,
+                    window: TerminalWindow(
+                      project: activeProject!,
+                      onWindowClose: () {
+                        setState(() {
+                          showProjectTerminal = false;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+
+              if (showReadmeTerminal && activeProject != null)
+                Positioned(
+                  left: readmeTerminalPos.dx,
+                  top: readmeTerminalPos.dy,
+                  child: DraggableTerminal(
+                    width: 400,
+                    height: 400,
+                    window: ReadmeWindow(
+                      onWindowClose: () {
+                        setState(() {
+                          showReadmeTerminal = false;
+                        });
+                      },
+                      readmeFile: activeProject!.readmeFile,
+                    ),
+                    onDrag: (delta) {
+                      setState(() {
+                        readmeTerminalPos += delta;
+                      });
+                    },
+                  ),
+                ),
             ],
-          ),
-          if (showFileManager && activeFolder != null)
-            Positioned(
-              left: fileManagerPos.dx,
-              top: fileManagerPos.dy,
-              child: DraggableTerminal(
-                width: 400,
-                height: 220,
-                window: FileManagerWindow(
-                  onWindowClose: () {
-                    setState(() {
-                      showFileManager = false;
-                    });
-                  },
-                  selectedFolder: activeFolder!,
-                  onScriptExecuted: (fileName) {
-                    final key = fileName.replaceAll(".md", "");
-
-                    final project = projectLookup[key];
-                    if (project == null) return;
-
-                    setState(() {
-                      activeProject = project;
-                      showProjectTerminal = true;
-                      showReadmeTerminal = true;
-                    });
-                  },
-                ),
-                onDrag: (delta) {
-                  setState(() {
-                    fileManagerPos += delta;
-                  });
-                },
-              ),
-            ),
-
-          if (showProjectTerminal && activeProject != null)
-            Positioned(
-              left: projectTerminalPos.dx,
-              top: projectTerminalPos.dy,
-              child: DraggableTerminal(
-                onDrag: (delta) {
-                  setState(() {
-                    projectTerminalPos += delta;
-                  });
-                },
-                width: 400,
-                height: 300,
-                window: TerminalWindow(
-                  project: activeProject!,
-                  onWindowClose: () {
-                    setState(() {
-                      showProjectTerminal = false;
-                    });
-                  },
-                ),
-              ),
-            ),
-
-          if (showReadmeTerminal && activeProject != null)
-            Positioned(
-              left: readmeTerminalPos.dx,
-              top: readmeTerminalPos.dy,
-              child: DraggableTerminal(
-                width: 400,
-                height: 400,
-                window: ReadmeWindow(
-                  onWindowClose: () {
-                    setState(() {
-                      showReadmeTerminal = false;
-                    });
-                  },
-                  readmeFile: activeProject!.readmeFile,
-                ),
-                onDrag: (delta) {
-                  setState(() {
-                    readmeTerminalPos += delta;
-                  });
-                },
-              ),
-            ),
-        ],
+          );
+        },
       ),
     );
   }
@@ -251,46 +270,58 @@ class _AppShellState extends State<AppShell> {
   ConstrainedBox ProjectFolderGenerator() {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 1500),
-      child: Center(
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          spacing: 10.0,
-          runSpacing: 10.0,
-          children: [
-            for (int i = 0; i < folderIconList.length; i++)
-              Container(
-                width: 150,
-                height: 150,
-                padding: EdgeInsets.all(5),
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onDoubleTap: () {
-                    setState(() {
-                      activeFolder = folderIconList[i];
-                      showFileManager = true;
-                    });
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        folderIconList[i].icon,
-                        width: 75,
-                        height: 75,
+      child: Column(
+        children: [
+          Text(
+            "P.s. double-tap the folder icon",
+            style: TextStyle(
+              fontSize: 12,
+              color: ColorPalette.cyberElectricBlue,
+            ),
+          ),
+          SizedBox(height: 24),
+          Center(
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 10.0,
+              runSpacing: 10.0,
+              children: [
+                for (int i = 0; i < folderIconList.length; i++)
+                  Container(
+                    width: 150,
+                    height: 150,
+                    padding: EdgeInsets.all(5),
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onDoubleTap: () {
+                        setState(() {
+                          activeFolder = folderIconList[i];
+                          showFileManager = true;
+                        });
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            folderIconList[i].icon,
+                            width: 75,
+                            height: 75,
+                          ),
+                          SizedBox(height: 14),
+                          Text(
+                            softWrap: true,
+                            folderIconList[i].folderTitle,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 14),
-                      Text(
-                        softWrap: true,
-                        folderIconList[i].folderTitle,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

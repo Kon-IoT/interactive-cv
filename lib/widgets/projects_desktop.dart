@@ -13,7 +13,7 @@ class ProjectsDesktop extends StatelessWidget {
           width: double.maxFinite,
           child: Text(
             "Projects I'm Proud of",
-            style: TextStyle(color: ColorPalette.cyberRichLemon, fontSize: 30),
+            style: TextStyle(color: ColorPalette.cyberRichLemon, fontSize: 28),
             textAlign: TextAlign.center,
           ),
         ),

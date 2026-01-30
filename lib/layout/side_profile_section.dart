@@ -7,188 +7,159 @@ class SideProfileSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
+      width: screenWidth * 0.25,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: ColorPalette.ghBackground,
-        border: Border(right: BorderSide(color: Colors.white12)),
+        border: const Border(right: BorderSide(color: Colors.white12)),
       ),
-      width: screenWidth / 4,
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        height: screenHeight,
 
-        decoration: BoxDecoration(
-          color: ColorPalette.ghBackground,
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: ColorPalette.ghBorder),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+      child: Align(
+        alignment: AlignmentGeometry.topCenter,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: 1000),
+          child: Container(
+            width: screenWidth * 0.25,
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: ColorPalette.ghBackground,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: ColorPalette.ghBorder),
+            ),
 
-          children: [
-            SizedBox(height: 24),
-            Container(
-              width: 175,
-              height: 175,
-              decoration: const BoxDecoration(
-                color: ColorPalette.cyberElectricBlue,
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: ClipOval(
-                  child: Image.asset(
-                    "assets/images/temporary_pfp.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 24),
-            Text(
-              "KUN CHANKETTA",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: ColorPalette.textPrimary,
-                fontSize: 20,
-              ),
-            ),
-            Text(
-              "Engineering Student  she/her",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: ColorPalette.cyberPaleSilver,
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(
-                    ColorPalette.cyberElectricBlue,
-                  ),
-                ),
-                onPressed: () async {
-                  final Uri cvUri = Uri.parse(
-                    'https://raw.githubusercontent.com/Kon-IoT/interactive-cv/main/assets/pdf/chanketta_kun_resume.pdf',
-                  );
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 12),
 
-                  await launchUrl(cvUri, mode: LaunchMode.externalApplication);
-                },
-                child: Text(
-                  "Download Resume",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: ColorPalette.cyberRaisinBlack,
+                  // Avatar
+                  Container(
+                    width: 160,
+                    height: 160,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ColorPalette.cyberElectricBlue,
+                    ),
+                    padding: const EdgeInsets.all(5),
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/temporary_pfp.jpg",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 220,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.location_on),
-                  SizedBox(width: 10),
-                  Text("Phnom Penh"),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 220,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.schedule),
-                  SizedBox(width: 10),
-                  Text("UTC + 7"),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: 220,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.email),
-                  SizedBox(width: 10),
-                  GestureDetector(
-                    child: Text("chankettakun@gmail.com"),
-                    onTap: () async {
-                      final Uri emailUri = Uri(
+
+                  const SizedBox(height: 18),
+
+                  Text(
+                    "KUN CHANKETTA",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: ColorPalette.textPrimary,
+                    ),
+                  ),
+
+                  Text(
+                    "Engineering Student · she/her",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: ColorPalette.cyberPaleSilver,
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  SizedBox(
+                    width: 200,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPalette.cyberElectricBlue,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                      onPressed: () async {
+                        final uri = Uri.parse(
+                          'https://raw.githubusercontent.com/Kon-IoT/interactive-cv/main/assets/pdf/chanketta_kun_resume.pdf',
+                        );
+                        await launchUrl(
+                          uri,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      child: Text(
+                        "Download Resume",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: ColorPalette.cyberRaisinBlack,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 18),
+
+                  SizedBox(
+                    width: 200,
+                    child: _info(Icons.location_on, "Phnom Penh"),
+                  ),
+                  SizedBox(width: 200, child: _info(Icons.schedule, "UTC +7")),
+                  SizedBox(
+                    width: 200,
+                    child: _link(
+                      Icons.email,
+                      "chankettakun@gmail.com",
+                      Uri(
                         scheme: 'mailto',
                         path: 'chankettakun@gmail.com',
                         queryParameters: {'subject': 'Hello Ketta'},
-                      );
-
-                      await launchUrl(
-                        emailUri,
-                        mode: LaunchMode.externalApplication,
-                      );
-                    },
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 200,
+                    child: _link(
+                      Icons.link,
+                      "github.com/Kon-IoT",
+                      Uri.parse("https://github.com/Kon-IoT"),
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              width: 220,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.link),
-                  SizedBox(width: 10),
-                  GestureDetector(
-                    child: Text("https://github.com/Kon-IoT"),
-                    onTap: () async {
-                      final Uri githubUri = Uri.parse(
-                        'https://github.com/Kon-IoT',
-                      );
-
-                      if (await canLaunchUrl(githubUri)) {
-                        await launchUrl(
-                          githubUri,
-                          mode: LaunchMode.externalApplication,
-                        );
-                      }
-                    },
-                  ),
-                ],
-              ),
-            ),
-            // SizedBox(
-            //   width: 220,
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: [
-            //       Icon(Icons.phone_android),
-            //       SizedBox(width: 10),
-            //       Text("XXX-XXX-XXX"),
-            //     ],
-            //   ),
-            // ),
-          ],
+          ),
         ),
       ),
     );
   }
-}
 
-class NavItem extends StatelessWidget {
-  final String label;
-  const NavItem(this.label, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _info(IconData icon, String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Text('▸ $label'),
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [Icon(icon, size: 18), const SizedBox(width: 10), Text(text)],
+      ),
+    );
+  }
+
+  Widget _link(IconData icon, String label, Uri uri) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: GestureDetector(
+        onTap: () => launchUrl(uri, mode: LaunchMode.externalApplication),
+        child: Row(
+          children: [
+            Icon(icon, size: 18),
+            const SizedBox(width: 10),
+            Flexible(child: Text(label, overflow: TextOverflow.ellipsis)),
+          ],
+        ),
+      ),
     );
   }
 }

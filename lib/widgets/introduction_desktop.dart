@@ -15,7 +15,7 @@ class IntroductionDesktop extends StatelessWidget {
           width: double.maxFinite,
           child: Text(
             "Hello! I'm Chanketta Kun.",
-            style: TextStyle(color: ColorPalette.cyberRichLemon, fontSize: 30),
+            style: TextStyle(color: ColorPalette.cyberRichLemon, fontSize: 28),
             textAlign: TextAlign.center,
           ),
         ),
