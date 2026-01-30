@@ -75,7 +75,7 @@ class SideProfileSection extends StatelessWidget {
                 ),
                 onPressed: () async {
                   final Uri cvUri = Uri.parse(
-                    'assets/pdf/chanketta_kun_resume.pdf',
+                    'https://raw.githubusercontent.com/Kon-IoT/interactive-cv/main/assets/pdf/chanketta_kun_resume.pdf',
                   );
 
                   await launchUrl(cvUri, mode: LaunchMode.externalApplication);

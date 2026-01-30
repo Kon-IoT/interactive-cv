@@ -116,7 +116,9 @@ class _AppShellState extends State<AppShell> {
                                 padding: EdgeInsets.all(10),
                                 width: double.maxFinite,
                                 height: isDesktop ? 250 : 150,
-                                child: GifBox(gifPath: 'gif/anime_girl.gif'),
+                                child: GifBox(
+                                  gifPath: 'assets/gif/anime_girl.gif',
+                                ),
                               ),
                               IntroductionDesktop(),
                               KeyedSubtree(
